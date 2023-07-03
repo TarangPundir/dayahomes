@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
     <link rel="stylesheet" type="text/css" href="{% static 'homes/assets/css/app.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'homes/assets/css/style.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'homes/assets/css/components.css' %}">
@@ -15,6 +14,8 @@
     <link rel="stylesheet" type="text/css" href="{% static 'homes/assets/bundles/datatables/datatables.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'homes/assets/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'homes/assets/css/confirm.css' %}">
+    {% block title %}
+    {% endblock %}
     {% block extra_css %}
     {% endblock %}
 </head>

@@ -77,14 +77,18 @@ WSGI_APPLICATION = 'homes.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mySql',
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': 'dayahomes',
         'USER': 'root',
         'PASSWORD': 'root',
-        'PORT': '8606',
-        'HOST': 'localhost',
+        'PORT': '3306',
+        'HOST': '127.0.0.1',
     }
 }
+
+
+import pymysql
+pymysql.install_as_MySQLdb()
 
 
 # Password validation
