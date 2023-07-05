@@ -1,0 +1,68 @@
+{% extends 'layout/app.html' %}
+
+
+{% block title %}
+<title>Employee</title>
+{% endblock %}
+
+{% block extra_css %}
+{% endblock %}
+
+{% block main_content %}
+<div class="d-flex"><a href="{% url 'list_employee' %}" class="btn btn-primary mb-3 ml-auto">View All Banners</a></div>
+<div class="card">
+    <div class="card-header">
+        <h4>Add Employee</h4>
+    </div>
+    <div class="card-body">
+
+
+
+    <form id="employee_form">
+        {% csrf_token %}
+        <div class="form-group">
+            <label>Name</label>
+            <input type="text" class="form-control" name="name" required value="{{employee.name}}">
+            <input type="hidden" class="form-control" name="id" required value="{{employee.id}}">
+        </div>
+        <div class="form-group">
+            <label>Contact of Employee</label>
+            <input type="text" class="form-control" name="text" required value="{{employee.text}}">
+        </div>
+        <div class="form-group">
+            <label>Image of Employee</label><span><img src="{{banner.image.url}}" height="30"/></span>
+            <input type="file" class="form-control" name="image">
+        </div>
+        <button type="submit" class="btn btn-success">Update</button>
+    </form>
+
+
+
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+
+<script>
+    $(document).ready(function() {
+       $('#employee_form').submit(function(e) {
+           e.preventDefault();
+    
+           var formData = new FormData(this);
+    
+           $.ajax({
+               url: "{% url 'update_employee' %}",
+               type: 'POST',
+               data: formData,
+               processData: false,
+               contentType: false,
+               success: function(response) {
+                window.location.href = "{% url 'list_employee' %}";
+               }
+           });
+       });
+    });
+</script>
+
+{% endblock %}
