@@ -1,0 +1,67 @@
+{% extends 'layout/app.html' %}
+
+
+{% block title %}
+<title>banner</title>
+{% endblock %}
+
+{% block extra_css %}
+{% endblock %}
+
+{% block main_content %}
+<div class="card">
+    <div class="card-header">
+        <h4>Add Banner</h4>
+    </div>
+    <div class="card-body">
+
+
+
+    <form id="banner_form">
+        {% csrf_token %}
+        <div class="form-group">
+            <label>Name</label>
+            <input type="text" class="form-control" name="name" required>
+        </div>
+        <div class="form-group">
+            <label>Text of banner</label>
+            <input type="text" class="form-control" name="text" required>
+        </div>
+        <div class="form-group">
+            <label>Image of Banner</label>
+            <input type="file" class="form-control" name="image" required>
+        </div>
+        <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+
+
+
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+
+<script>
+    $(document).ready(function() {
+       $('#banner_form').submit(function(e) {
+           e.preventDefault();
+    
+           var formData = new FormData(this);
+    
+           $.ajax({
+               url: "{% url 'save_banner' %}",
+               type: 'POST',
+               data: formData,
+               processData: false,
+               contentType: false,
+               success: function(response) {
+                   // Handle the response from the server
+                   console.log(response);
+               }
+           });
+       });
+    });
+</script>
+
+{% endblock %}
