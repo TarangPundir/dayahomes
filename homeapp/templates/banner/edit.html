@@ -9,9 +9,7 @@
 {% endblock %}
 
 {% block main_content %}
-<div class="d-flex">
-    <a href="{% url 'index_banner' %}" class="btn btn-primary mb-3 ml-auto">View All Banners</a>
-</div>
+<div class="d-flex"><a href="{% url 'index_banner' %}" class="btn btn-primary mb-3 ml-auto">View All Banners</a></div>
 <div class="card">
     <div class="card-header">
         <h4>Add Banner</h4>
@@ -24,17 +22,18 @@
         {% csrf_token %}
         <div class="form-group">
             <label>Name</label>
-            <input type="text" class="form-control" name="name" required>
+            <input type="text" class="form-control" name="name" required value="{{banner.name}}">
+            <input type="hidden" class="form-control" name="id" required value="{{banner.id}}">
         </div>
         <div class="form-group">
             <label>Text of banner</label>
-            <input type="text" class="form-control" name="text" required>
+            <input type="text" class="form-control" name="text" required value="{{banner.text}}">
         </div>
         <div class="form-group">
-            <label>Image of Banner</label>
-            <input type="file" class="form-control" name="image" required>
+            <label>Image of Banner</label><span><img src="{{banner.image.url}}" height="30"/></span>
+            <input type="file" class="form-control" name="image">
         </div>
-        <button type="submit" class="btn btn-success">Submit</button>
+        <button type="submit" class="btn btn-success">Update</button>
     </form>
 
 
@@ -53,7 +52,7 @@
            var formData = new FormData(this);
     
            $.ajax({
-               url: "{% url 'save_banner' %}",
+               url: "{% url 'update_banner' %}",
                type: 'POST',
                data: formData,
                processData: false,

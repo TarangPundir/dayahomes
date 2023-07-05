@@ -9,18 +9,16 @@
       <ul class="sidebar-menu">
         <li class="menu-header">Main</li>
         <li class="dropdown active">
-          <a href="index.html" class="nav-link"><i data-feather="monitor"></i><span>Dashboard</span></a>
+          <a href="{% url 'try' %}" class="nav-link"><i data-feather="monitor"></i><span>Dashboard</span></a>
         </li>
         <li class="dropdown">
           <a href="#" class="menu-toggle nav-link has-dropdown"><i
-              data-feather="briefcase"></i><span>Widgets</span></a>
+              data-feather="briefcase"></i><span>Banner</span></a>
           <ul class="dropdown-menu">
-            <li><a class="nav-link" href="widget-chart.html">Chart Widgets</a></li>
-            <li><a class="nav-link" href="widget-data.html">Data Widgets</a></li>
+            <li><a class="nav-link" href="{% url 'add_banner' %}">Add New</a></li>
+            <li><a class="nav-link" href="{% url 'index_banner' %}">View All</a></li>
           </ul>
         </li>
-        <li class="menu-header">Single Elements</li>
-        <li><a class="nav-link" href="blank.html"><i data-feather="file"></i><span>Blank Page</span></a></li>
       </ul>
     </aside>
   </div>

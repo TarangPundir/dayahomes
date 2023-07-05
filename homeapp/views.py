@@ -20,10 +20,34 @@ def save_banner(request):
         banner = Banner(name=name, text=text, image=image)
         banner.save()
 
-        return HttpResponse('Banner saved successfully.')
-
     return HttpResponse('Invalid request.')
 
 def index_banner(request):
     banner = Banner.objects.all()
     return render(request, 'banner/index.html', {'banner': banner})
+
+def delete_banner(request, id):
+    banner = Banner.objects.get(id=id)
+    banner.delete()
+    return redirect('index_banner')
+
+def edit_banner(request, id):
+    banner = Banner.objects.get(id=id)
+    return render(request, 'banner/edit.html', {'banner': banner})
+
+def update_banner(request):
+    banner_id = request.POST.get('id')
+    banner = Banner.objects.get(id=banner_id)
+    name = request.POST.get('name')
+    text = request.POST.get('text')
+    image_file = request.FILES.get('image')
+    
+    if image_file:
+        banner.image = image_file
+
+    banner.name = name
+    banner.text = text
+    banner.save()
+    return HttpResponse("Banner updated successfully.")
+
+    
