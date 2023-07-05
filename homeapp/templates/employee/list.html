@@ -18,7 +18,7 @@
                 <th>Serial No.</th>
                 <th>Name</th>
                 <th>Image</th>
-                <th>Text</th>
+                <th>Contact</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -28,7 +28,7 @@
                 <td>{{ forloop.counter }}</td>
                 <td>{{ employee.name }}</td>
                 <td><img src="{{ employee.image.url }}" alt="{{ employee.name }}" height="40"></td>
-                <td>{{ employee.text }}</td>
+                <td>{{ employee.contact }}</td>
                 <td><a href="{% url 'delete_employee' employee.id %}"><i class="fa fa-trash"></i></a>
                     <a href="{% url 'edit_employee' employee.id %}"><i class="fa fa-edit"></i></a>
                 </td>

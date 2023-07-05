@@ -20,6 +20,8 @@ def save_banner(request):
         # Create a new banner instance
         banner = Banner(name=name, text=text, image=image)
         banner.save()
+        
+        return HttpResponse('saved successfully')
 
     return HttpResponse('Invalid request.')
 
@@ -65,6 +67,7 @@ def save_employee(request):
         # Create a new banner instance
         employee = Employee(name=name, contact=contact, image=image)
         employee.save()
+        return HttpResponse('saved successfully')
 
     return HttpResponse('Invalid request.')
 
