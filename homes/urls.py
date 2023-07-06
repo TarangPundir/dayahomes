@@ -21,6 +21,7 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('manager/', include('homeapp.urls')),
+    path('web/', include('weblook.urls')),
 ]
 
 if settings.DEBUG:

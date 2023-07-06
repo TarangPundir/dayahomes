@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="{% static 'homes/assets/bundles/select2/dist/css/select2.min.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'homes/assets/css/app.min.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'homes/assets/css/style.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'homes/assets/css/components.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'homes/assets/css/custom.css' %}">
+
+
+  <link rel="stylesheet" type="text/css" href="{% static 'homes/assets/bundles/izitoast/css/iziToast.min.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'homes/assets/bundles/datatables/datatables.min.css' %}">
+  <link rel="stylesheet" type="text/css"
+    href="{% static 'homes/assets/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'homes/assets/css/confirm.css' %}">
+  <style>
+    .navbar{
+      left: 0px!important;
+    }
+  </style>
+  {% block title %}
+  {% endblock %}
+  {% block extra_css %}
+  {% endblock %}
+</head>
+
+<body>
+  <div>
+    <nav class="navbar navbar-expand-lg bg-primary">
+      <a class="navbar-brand" href="#">Daya Homes</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Career</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="">
+      {% block main_content %}
+      {% endblock %}
+  </div>
+
+    <script src="{% static 'homes/assets/js/app.min.js' %}"></script>
+    <script src="{% static 'homes/assets/bundles/apexcharts/apexcharts.min.js' %}"></script>
+    <script src="{% static 'homes/assets/js/page/index.js' %}"></script>
+    <script src="{% static 'homes/assets/js/page/Sortable.min.js' %}"></script>
+    <script src="{% static 'homes/assets/js/scripts.js' %}"></script>
+    <script src="{% static 'homes/assets/bundles/datatables/datatables.min.js' %}"></script>
+    <script src="{% static 'homes/assets/bundles/sweetalert/sweetalert.min.js' %}"></script>
+    <script src="{% static 'homes/assets/js/page/datatables.js' %}"></script>
+    <script
+      src="{% static 'homes/assets/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js' %}"></script>
+    <script src="{% static 'homes/assets/bundles/jquery-ui/jquery-ui.min.js' %}"></script>
+    <script src="{% static 'homes/assets/bundles/izitoast/js/iziToast.min.js' %}"></script>
+    <script src="{% static 'homes/assets/js/page/toastr.js' %}"></script>
+    <script src="{% static 'homes/assets/js/confirm.js' %}"></script>
+    <script src="{% static 'homes/assets/bundles/select2/dist/js/select2.full.min.js' %}"></script>
+    <script src="{% static 'homes/assets/js/page/owl-carousel.js' %}"></script>
+
+    {% block extra_js %}
+    {% endblock %}
+  </div>
+</body>
+
+</html>

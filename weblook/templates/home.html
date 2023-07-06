@@ -1,0 +1,56 @@
+{% extends 'weblayout/app.html' %}
+
+{% block title %}
+<title>Homepage</title>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .emp{
+        display: grid;
+        grid-template-columns: 25%;
+    }
+</style>
+{% endblock %}
+
+{% load static %} <!-- Add this line to load the static template tag library -->
+
+{% block main_content %}
+<h1 class="display-4">Code by shivam</h1>
+<div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+    <div class="carousel-inner">
+        {% for banner in banner %}
+        <div class="carousel-item {% if forloop.first %}active{% endif %}">
+            <img class="d-block w-100" src="{{ banner.image.url }}" alt="{{ banner.name }}" height="600">
+        </div>
+    {% endfor %}
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+  <h4 class="text-center mt-5">Employees</h4>
+  <div class="d-flex mt-5">
+     {% for employee in employees %}
+         <div class="p-3 w-25">
+          <div class="card">
+              <img alt="image" src="{{ employee.image.url }}" class="img-fluid">
+              <div class="card-header">
+                <h4>Name: {{employee.name}}</h4>
+            </div>
+            <div class="card-header">
+            <h4>Contact: {{employee.contact}}</h4>
+            </div>
+          </div>
+         </div>
+     {% endfor %}
+  </div>
+{% endblock %}
+
+{% block extra_js %}
+{% endblock %}
