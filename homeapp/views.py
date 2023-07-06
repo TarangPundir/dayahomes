@@ -99,4 +99,91 @@ def update_employee(request):
     employee.save()
     return HttpResponse("Employee updated successfully.")
 
+
+def add_category(request):
+    return render(request, 'category/create.html')
+
+def save_category(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        place = request.POST.get('place')
+        category = Category(name=name, place=place)
+        category.save()
+        return HttpResponse('Created Successfully')
+    return HttpResponse('Invalid Request')
+
+def list_category(request):
+    category = Category.objects.all()
+    return render(request, 'category/index.html', {'category': category})
+
+def delete_category(request, id):
+    category = Category.objects.get(id=id)
+    category.delete()
+    return redirect('list_category')
+
+def edit_category(request, id):
+    category = Category.objects.get(id=id)
+    return render(request, 'category/edit.html', {'category': category})
+    
+def update_category(request):
+    category_id = request.POST.get('id')
+    category = Category.objects.get(id=category_id)
+    name = request.POST.get('name')
+    place = request.POST.get('place')
+    category.name = name
+    category.place = place
+    category.save()
+    return HttpResponse('Updated Successfully')
+
+def add_job(request):
+    category = Category.objects.all()
+    return render(request, 'job/create.html', {'category': category})
+
+def save_job(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        category_ids = request.POST.getlist('category')
+        categories = Category.objects.filter(id__in=category_ids)
+        salary = request.POST.get('salary')
+        location = request.POST.get('location')
+
+        job = Job(name=name, salary=salary, location=location)
+        job.save()
+        job.category.set(categories)  # Set the many-to-many relationship
+
+        return HttpResponse('Created Successfully')
+
+    return HttpResponse('Error Occurred')
+
+def index_job(request):
+    job = Job.objects.all()
+    return render(request, 'job/index.html', {'job': job})
+
+def edit_job(request, id):
+    job = Job.objects.get(id=id)
+    category = Category.objects.all()
+    return render(request, 'job/edit.html', {'job':job, 'category': category})
+
+def delete_job(request, id):
+    job = Job.objects.get(id=id)
+    job.delete()
+    return redirect('index_job')
+
+def update_job(request):
+    job_id = request.POST.get('id')
+    job = Job.objects.get(id=job_id)
+    name = request.POST.get('name')
+    category_ids = request.POST.getlist('category')
+    categories = Category.objects.filter(id__in=category_ids)
+    salary = request.POST.get('salary')
+    location = request.POST.get('location')
+    
+    job.name = name
+    job.salary = salary
+    job.location = location
+    job.category.set(categories) 
+    
+    job.save()
+    
+    return HttpResponse('Updated Successfully')
     

@@ -13,7 +13,7 @@
         </li>
         <li class="dropdown">
           <a href="#" class="menu-toggle nav-link has-dropdown"><i
-              data-feather="briefcase"></i><span>Banner</span></a>
+              data-feather="sliders"></i><span>Banner</span></a>
           <ul class="dropdown-menu">
             <li><a class="nav-link" href="{% url 'add_banner' %}">Add New</a></li>
             <li><a class="nav-link" href="{% url 'index_banner' %}">View All</a></li>
@@ -21,10 +21,26 @@
         </li>
         <li class="dropdown">
           <a href="#" class="menu-toggle nav-link has-dropdown"><i
-              data-feather="briefcase"></i><span>Employees</span></a>
+              data-feather="users"></i><span>Employees</span></a>
           <ul class="dropdown-menu">
             <li><a class="nav-link" href="{% url 'add_employee' %}">Add New</a></li>
             <li><a class="nav-link" href="{% url 'list_employee' %}">View All</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="menu-toggle nav-link has-dropdown"><i
+              data-feather="layers"></i><span>Category</span></a>
+          <ul class="dropdown-menu">
+            <li><a class="nav-link" href="{% url 'add_category' %}">Add New</a></li>
+            <li><a class="nav-link" href="{% url 'list_category' %}">View All</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="menu-toggle nav-link has-dropdown"><i
+              data-feather="layers"></i><span>Jobs</span></a>
+          <ul class="dropdown-menu">
+            <li><a class="nav-link" href="{% url 'add_job' %}">Add New</a></li>
+            <li><a class="nav-link" href="{% url 'index_job' %}">View All</a></li>
           </ul>
         </li>
       </ul>

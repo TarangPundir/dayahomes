@@ -1,0 +1,83 @@
+{% extends 'layout/app.html' %}
+
+
+{% block title %}
+<title>Add Category</title>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .select2-container{
+        width: 100%!important
+    }
+</style>
+{% endblock %}
+
+{% block main_content %}
+<div class="d-flex">
+    <a href="{% url 'index_job' %}" class="btn btn-primary mb-3 ml-auto">View All Jobs</a>
+</div>
+<div class="card">
+    <div class="card-header">
+        <h4>Add Category</h4>
+    </div>
+    <div class="card-body">
+
+
+
+    <form id="job_form">
+        {% csrf_token %}
+        <div class="form-group">
+            <label>Name of Job</label>
+            <input type="text" class="form-control" name="name" required value="{{job.name}}">
+            <input type="hidden" name="id" value="{{job.id}}">
+        </div>
+        <div class="form-group">
+            <label>Select Category</label>
+            <select class="form-control select2" multiple="" name="category" required>
+                {% for category in category %}
+                    <option value="{{ category.id }}" {% if category in job.category.all %}selected{% endif %}>{{ category.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Salary</label>
+            <input type="text" class="form-control" name="salary" required value="{{job.salary}}">
+        </div>
+        <div class="form-group">
+            <label>Location</label>
+            <input type="text" class="form-control" name="location" required value="{{job.location}}">
+        </div>
+        <button type="submit" class="btn btn-success">Update</button>
+    </form>
+
+
+
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+
+<script>
+    $(document).ready(function() {
+       $('#job_form').submit(function(e) {
+           e.preventDefault();
+    
+           var formData = new FormData(this);
+    
+           $.ajax({
+               url: "{% url 'update_job' %}",
+               type: 'POST',
+               data: formData,
+               processData: false,
+               contentType: false,
+               success: function(response) {
+                   window.location.href = "{% url 'index_job' %}";
+               }
+           });
+       });
+    });
+</script>
+
+{% endblock %}
